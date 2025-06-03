@@ -10,6 +10,24 @@
     <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
     <p><strong>Precio:</strong> {{ producto.precio }}</p>
 
+    <div id="walletBrick_container"></div>
+
     <p><a href="{% url 'producto_lista' %}">Volver al listado</a></p>
 </body>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+  const publicKey = "{{ MP_PUBLIC_KEY }}";
+  const preferenceId = "{{ preference_id }}";
+
+  const mp = new MercadoPago(publicKey);
+  const bricksBuilder = mp.bricks();
+  const renderWalletBrick = async (bricksBuilder) => {
+    await bricksBuilder.create("wallet", "walletBrick_container", {
+      initialization: {
+        preferenceId: preferenceId,
+      }
+    });
+  };
+  renderWalletBrick(bricksBuilder);
+</script>
 </html>
