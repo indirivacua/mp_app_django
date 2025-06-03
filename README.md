@@ -1,0 +1,1 @@
+# mp_app_django
