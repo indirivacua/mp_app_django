@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Listado de Productos</title>
+</head>
+<body>
+    <h1>Listado de Productos</h1>
+    <a href="{% url 'producto_agregar' %}">Agregar producto</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in productos %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>
+                    <a href="{% url 'producto_detalle' p.id %}">
+                        {{ p.nombre }}
+                    </a>
+                </td>
+                <td>{{ p.precio }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">No hay productos aún.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

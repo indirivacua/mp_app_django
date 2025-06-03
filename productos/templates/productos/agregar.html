@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Agregar Producto</title>
+</head>
+<body>
+    <h1>Agregar Producto</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre:</label><br>
+        <input type="text" name="nombre"><br><br>
+
+        <label>Precio:</label><br>
+        <input type="text" name="precio"><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+    <p><a href="{% url 'producto_lista' %}">Cancelar y volver al listado</a></p>
+</body>
+</html>
